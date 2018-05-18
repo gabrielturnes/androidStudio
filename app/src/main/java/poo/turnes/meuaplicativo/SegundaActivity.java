@@ -7,25 +7,25 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class SegundaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_segunda);
+        Intent intent = getIntent();
+        String pegaMsg = intent.getStringExtra("mensagem");
+        TextView mostraMsg = (TextView) findViewById(R.id.mostraNome);
+        mostraMsg.setText(pegaMsg);
     }
 
-    public void olaNome(View view){
-        Intent intent = new Intent(this, SegundaActivity.class);
-        EditText caixa = (EditText) findViewById(R.id.eTNome);
+    public void enviaNome(View view){
+        Intent intent = new Intent(this, TerceiraActivity.class);
+        EditText caixa = (EditText) findViewById(R.id.editName);
         String mensagem = caixa.getText().toString();
-
-        TextView ola = (TextView) findViewById(R.id.textViewOla);
-        ola.setText(mensagem);
-
         intent.putExtra("mensagem", mensagem);
-
         startActivity(intent);
-
     }
+
+
 }
